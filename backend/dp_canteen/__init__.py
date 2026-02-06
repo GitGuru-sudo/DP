@@ -1,0 +1,3 @@
+"""
+DP Canteen project init
+"""
