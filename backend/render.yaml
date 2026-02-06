@@ -9,7 +9,8 @@ services:
     name: dp-canteen-api
     runtime: python
     plan: free
-    buildCommand: ./build.sh
+    rootDir: backend
+    buildCommand: chmod +x build.sh && ./build.sh
     startCommand: gunicorn dp_canteen.wsgi:application --bind 0.0.0.0:$PORT
     envVars:
       - key: DATABASE_URL
