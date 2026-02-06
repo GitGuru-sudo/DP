@@ -21,10 +21,13 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-change-this-in
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
 
-# Allow Railway domains and custom domains
+# Allow Railway/Render domains and custom domains
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 if os.environ.get('RAILWAY_PUBLIC_DOMAIN'):
     ALLOWED_HOSTS.append(os.environ.get('RAILWAY_PUBLIC_DOMAIN'))
+# Render.com support
+if os.environ.get('RENDER_EXTERNAL_HOSTNAME'):
+    ALLOWED_HOSTS.append(os.environ.get('RENDER_EXTERNAL_HOSTNAME'))
 
 # AES Encryption Key for QR codes (32 bytes for AES-256)
 AES_SECRET_KEY = os.environ.get('AES_SECRET_KEY', 'dp_canteen_secret_key_32bytes!!')
